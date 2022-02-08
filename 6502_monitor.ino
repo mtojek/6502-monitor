@@ -25,15 +25,15 @@ void loop() {
   // put your main code here, to run repeatedly:
   Serial.println("Checking pins with input extension library...");
 
-  byte addrHi = inputExt.digitalReadExt(INPUT_EXTENSION_UC1);
-  byte addrLo = inputExt.digitalReadExt(INPUT_EXTENSION_UC2);
-  byte data = inputExt.digitalReadExt(INPUT_EXTENSION_UC3);
+  byte addrHi = inputExt.pinState(INPUT_EXTENSION_UC1);
+  byte addrLo = inputExt.pinState(INPUT_EXTENSION_UC2);
+  byte data = inputExt.pinState(INPUT_EXTENSION_UC3);
 
   printBits(addrHi);
   Serial.print(' ');
   printBits(addrLo);
   Serial.print(' ');
   printBits(data);
-  
+
   delay(1000);
 }
