@@ -16,7 +16,7 @@ class InputExtension {
     int firstOut, firstInh, secondOut, secondInh, thirdOut, thirdInh;
   public:
     InputExtension(int a, int b, int c, int firstOut, int firstInh, int secondOut, int secondInh, int thirdOut, int thirdInh);
-    byte pinState(byte  uc);
+    byte readPins(byte  uc);
 };
 
 #endif
