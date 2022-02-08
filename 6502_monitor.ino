@@ -1,4 +1,5 @@
 #include "input_extension.h"
+#include "pretty_printer.h"
 
 /* Pin configuration */
 
@@ -35,11 +36,4 @@ void loop() {
   printBits(data);
   
   delay(1000);
-}
-
-void printBits(byte value) {
-  for (int i = 7; i >= 0; i--) {
-    bool b = bitRead(value, i);
-    Serial.print(b);
-  }
 }
