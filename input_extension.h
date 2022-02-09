@@ -8,6 +8,7 @@
 
 class InputExtension {
   private:
+    // Pin map representing real pin order on PCB
     static byte pinMap[];
 
     // Pins A, B, C
