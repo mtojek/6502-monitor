@@ -14,7 +14,10 @@
 #define PIN_THIRD_OUT A4
 #define PIN_THIRD_INH A5
 
-InputExtension inputExt(PIN_A, PIN_B, PIN_C, PIN_FIRST_OUT, PIN_FIRST_INH, PIN_SECOND_OUT, PIN_SECOND_INH, PIN_THIRD_OUT, PIN_THIRD_INH);
+InputExtension inputExt(PIN_A, PIN_B, PIN_C,
+                        PIN_FIRST_OUT, PIN_FIRST_INH,
+                        PIN_SECOND_OUT, PIN_SECOND_INH,
+                        PIN_THIRD_OUT, PIN_THIRD_INH);
 
 void setup() {
   // put your setup code here, to run once:
