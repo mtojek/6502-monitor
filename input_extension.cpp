@@ -1,5 +1,7 @@
 #include "input_extension.h"
 
+static byte InputExtension::pinMap[] = {3, 0, 1, 2, 5, 7, 6, 4};
+
 InputExtension::InputExtension(int a, int b, int c, int firstOut, int firstInh, int secondOut, int secondInh, int thirdOut, int thirdInh) {
   this->pinA = a;
   this->pinB = b;
@@ -29,6 +31,18 @@ void InputExtension::setup() {
   digitalWrite(this->pinThirdInh, HIGH);
 }
 
+byte InputExtension::readPinsOrdered(byte uc) {
+  byte pins = this->readPins(uc);
+
+  // Mapping bit numbers to match PCB order
+  byte ordered = 0, value;
+  for (int i = 0; i < 8; i++) {
+    value = bitRead(pins, InputExtension::pinMap[i]);
+    bitWrite(ordered, i, value);
+  }
+  return ordered;
+}
+
 byte InputExtension::readPins(byte uc) {
   int pinOut, pinInh;
 
@@ -54,11 +68,11 @@ byte InputExtension::readPins(byte uc) {
 
 byte InputExtension::readSelectedPins(int pinOut, int pinInh) {
   digitalWrite(pinInh, LOW);
-  
+
   unsigned int a, b, c, out, state = 0;
   for (unsigned int i = 0; i < 8; i++) {
     state = state << 1;
-    
+
     a = i % 2;
     b = (i / 2) % 2;
     c = (i / 4) % 2;
@@ -70,7 +84,7 @@ byte InputExtension::readSelectedPins(int pinOut, int pinInh) {
     out = digitalRead(pinOut);
     state += out;
   }
-  
+
   digitalWrite(pinInh, HIGH);
   return state;
 }
