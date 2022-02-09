@@ -19,6 +19,8 @@ InputExtension inputExt(PIN_A, PIN_B, PIN_C, PIN_FIRST_OUT, PIN_FIRST_INH, PIN_S
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
+
+  inputExt.setup();
 }
 
 void loop() {
@@ -29,11 +31,13 @@ void loop() {
   byte addrLo = inputExt.readPins(INPUT_EXTENSION_UC2);
   byte data = inputExt.readPins(INPUT_EXTENSION_UC3);
 
+
   printBits(addrHi);
   Serial.print(' ');
   printBits(addrLo);
   Serial.print(' ');
   printBits(data);
+  Serial.println();
 
   delay(1000);
 }

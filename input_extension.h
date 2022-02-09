@@ -11,10 +11,13 @@
 class InputExtension {
   private:
     // Pins A, B, C
-    int a, b, c;
+    int pinA, pinB, pinC;
     // OUT and INH pins for UCn (n = 1,2,3)
-    int firstOut, firstInh, secondOut, secondInh, thirdOut, thirdInh;
+    int pinFirstOut, pinFirstInh, pinSecondOut, pinSecondInh, pinThirdOut, pinThirdInh;
+
+    byte InputExtension::readSelectedPins(int outPin, int inhPin);
   public:
+    void setup();
     InputExtension(int a, int b, int c, int firstOut, int firstInh, int secondOut, int secondInh, int thirdOut, int thirdInh);
     byte readPins(byte  uc);
 };
