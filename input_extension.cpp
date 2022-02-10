@@ -36,7 +36,7 @@ byte InputExtension::readPinsOrdered(byte uc) {
 
   // Mapping bit numbers to match PCB order
   byte ordered = 0, value;
-  for (int i = 0; i < 8; i++) {
+  for (int i = 7; i >= 0; i--) {
     value = bitRead(pins, InputExtension::pinMap[i]);
     bitWrite(ordered, i, value);
   }
@@ -70,7 +70,7 @@ byte InputExtension::readSelectedPins(int pinOut, int pinInh) {
   digitalWrite(pinInh, LOW);
 
   unsigned int a, b, c, out, state = 0;
-  for (unsigned int i = 0; i < 8; i++) {
+  for (int i = 7; i >= 0; i--) {
     state = state << 1;
 
     a = i % 2;
