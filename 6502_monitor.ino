@@ -3,9 +3,11 @@
 
 /* Pin configuration */
 
-#define PIN_A 2
-#define PIN_B 3
-#define PIN_C 4
+#define PIN_CLOCK 2
+
+#define PIN_A 3
+#define PIN_B 4
+#define PIN_C 5
 
 #define PIN_FIRST_OUT A0
 #define PIN_FIRST_INH A1
@@ -20,16 +22,17 @@ InputExtension inputExt(PIN_A, PIN_B, PIN_C,
                         PIN_THIRD_OUT, PIN_THIRD_INH);
 
 void setup() {
-  // put your setup code here, to run once:
   Serial.begin(9600);
 
   inputExt.setup();
+
+  pinMode(PIN_CLOCK, INPUT);
+  attachInterrupt(digitalPinToInterrupt(PIN_CLOCK), onClock, CHANGE);
 }
 
-void loop() {
-  // put your main code here, to run repeatedly:
-  Serial.println("Checking pins with input extension library...");
 
+
+void onClock() {
   byte addrHi = inputExt.readPinsOrdered(INPUT_EXTENSION_UC1);
   byte addrLo = inputExt.readPinsOrdered(INPUT_EXTENSION_UC2);
   byte data = inputExt.readPinsOrdered(INPUT_EXTENSION_UC3);
@@ -41,6 +44,7 @@ void loop() {
   Serial.print(' ');
   printBits(data);
   Serial.println();
+}
 
-  delay(1000);
+void loop() {
 }
