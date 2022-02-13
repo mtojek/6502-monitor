@@ -31,14 +31,14 @@ Check Arduino serial monitor to preview buses:
 ## Kicad preview
 
 <p float="left">
-  <img src="/screenshots/pcb-3d-viewer.png?raw=true" height="400px">
-  <img src="/screenshots/pcb-layout.png?raw=true" height="400px">
+  <img src="/screenshots/pcb-3d-viewer.png?raw=true" height="320px">
+  <img src="/screenshots/pcb-layout.png?raw=true" height="320px">
 </p>
 
 ## Photos
 
 <p float="left">
-  <img src="/photos/1.jpg?raw=true" width="333px">
-  <img src="/photos/2.jpg?raw=true" width="333px">
-  <img src="/photos/3.jpg?raw=true" width="333px">
+  <img src="/photos/1.jpg?raw=true" width="256px">
+  <img src="/photos/2.jpg?raw=true" width="256px">
+  <img src="/photos/3.jpg?raw=true" width="256px">
 </p>
