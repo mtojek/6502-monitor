@@ -4,6 +4,7 @@
 /* Pin configuration */
 
 #define PIN_CLOCK 2
+#define PIN_READ_WRITE 6
 
 #define PIN_A 3
 #define PIN_B 4
@@ -27,19 +28,24 @@ void setup() {
   inputExt.setup();
 
   pinMode(PIN_CLOCK, INPUT);
-  attachInterrupt(digitalPinToInterrupt(PIN_CLOCK), onClock, CHANGE);
+  attachInterrupt(digitalPinToInterrupt(PIN_CLOCK), onClock, RISING);
+
+  pinMode(PIN_READ_WRITE, INPUT);
 }
 
 void onClock() {
   byte addrHi = inputExt.readPinsOrdered(INPUT_EXTENSION_UC1);
   byte addrLo = inputExt.readPinsOrdered(INPUT_EXTENSION_UC2);
+  unsigned int address = addrHi << 8 | addrLo;
+  unsigned int readWrite = digitalRead(PIN_READ_WRITE);
   byte data = inputExt.readPinsOrdered(INPUT_EXTENSION_UC3);
-
 
   printBits(addrHi);
   printBits(addrLo);
   Serial.print(' ');
   printBits(data);
+  Serial.print("    ");
+  printBuses(address, data, readWrite);
   Serial.println();
 }
 
