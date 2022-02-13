@@ -30,8 +30,6 @@ void setup() {
   attachInterrupt(digitalPinToInterrupt(PIN_CLOCK), onClock, CHANGE);
 }
 
-
-
 void onClock() {
   byte addrHi = inputExt.readPinsOrdered(INPUT_EXTENSION_UC1);
   byte addrLo = inputExt.readPinsOrdered(INPUT_EXTENSION_UC2);
@@ -39,7 +37,6 @@ void onClock() {
 
 
   printBits(addrHi);
-  Serial.print(' ');
   printBits(addrLo);
   Serial.print(' ');
   printBits(data);
