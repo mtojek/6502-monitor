@@ -28,7 +28,7 @@ void setup() {
   inputExt.setup();
 
   pinMode(PIN_CLOCK, INPUT);
-  attachInterrupt(digitalPinToInterrupt(PIN_CLOCK), onClock, RISING);
+  attachInterrupt(digitalPinToInterrupt(PIN_CLOCK), onClock, FALLING);
 
   pinMode(PIN_READ_WRITE, INPUT);
 }
